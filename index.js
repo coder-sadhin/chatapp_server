@@ -16,10 +16,11 @@ app.use(express.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoute);
 
+mongoose.set('strictQuery', false)
 //mongoose connection
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 }).then(() => {
     console.log("DB Connection Successful!")
 }).catch((err) => console.log(err));
