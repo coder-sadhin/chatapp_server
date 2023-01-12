@@ -7,6 +7,8 @@ const userRoutes = require("./routes/userRoutes");
 const messageRoute = require("./routes/messagesRoute");
 const socket = require("socket.io");
 
+const PORT = process.env.PORT || 5000;
+
 dotenv.config();
 app.use(cors());
 app.use(express.json());
@@ -22,8 +24,8 @@ mongoose.connect(process.env.MONGO_URL, {
     console.log("DB Connection Successful!")
 }).catch((err) => console.log(err));
 
-const server = app.listen(process.env.PORT, () => {
-    console.log(`Server started on Port ${process.env.PORT}`);
+const server = app.listen(PORT, () => {
+    console.log(`Server started on Port ${PORT}`);
 });
 
 const io = socket(server, {
