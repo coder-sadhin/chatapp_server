@@ -24,6 +24,10 @@ mongoose.connect(process.env.MONGO_URL, {
     console.log("DB Connection Successful!")
 }).catch((err) => console.log(err));
 
+app.get('/', (req, res) => {
+    res.send('Hello chat server Welcome')
+})
+
 const server = app.listen(PORT, () => {
     console.log(`Server started on Port ${PORT}`);
 });
